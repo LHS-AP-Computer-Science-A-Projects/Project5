@@ -1,13 +1,13 @@
+// Import the Scanner util.
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
- * Class that calculates the pay of an employee based on hours and overtime
+ * Calculates the pay of an employee based on hours and overtime
  * hours worked.
  */
 public class Main {
 
-	// Compiler constructor.
+	/** Compiler constructor. */
 	public static void main(String[] args) {
 		// Instantiates the scanner object.
 		Scanner scanner = new Scanner(System.in);
@@ -22,24 +22,16 @@ public class Main {
 		double regularHours = 0;
 		double overtimeHours = 0;
 
-		// Instantiate a String ArrayList with each of the five workdays stored within
+		// Instantiate a string array with each of the five workdays stored within
 		// the list.
-		ArrayList<String> days = new ArrayList<String>() {
-			{
-				add("Monday");
-				add("Tuesday");
-				add("Wednesday");
-				add("Thursday");
-				add("Friday");
-			}
-		};
+		String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
-		// The loop iterates through each of the days stored in the ArrayList, calling
+		// The loop iterates through each of the days stored in the array, calling
 		// on two separate methods to prompt the user for regular and overtime hours,
 		// then adds those hours to the total.
 		for (int i = 0; i < 5; i++) {
-			regularHours += getRegularHours(days.get(i));
-			overtimeHours += getOvertimeHours(days.get(i));
+			regularHours += getRegularHours(days[i]);
+			overtimeHours += getOvertimeHours(days[i]);
 		}
 		// Calculates total pay.
 		double totalPay = hourlyWage * regularHours + hourlyWage * overtimeHours * 1.5;
@@ -50,8 +42,10 @@ public class Main {
 		scanner.close();
 	}
 
-	// Returns a double value based on the amount of regular hours an individual
-	// works in the inputted day.
+	/** 
+     * Returns a double value based on the amount of regular hours an individual 
+     * works in the inputted day. 
+     */
 	private static double getRegularHours(String day) {
 		// Suppress warnings so that the scanner does not spam console with runnable
 		// errors.
@@ -67,8 +61,10 @@ public class Main {
 		return scanner.nextDouble();
 	}
 
-	// Returns a double value based on the amount of overtime hours an individual
-	// works in the inputted day.
+	/**
+     * Returns a double value based on the amount of
+     * overtime hours an individual works in the inputted day.
+     */
 	private static double getOvertimeHours(String day) {
 		// Suppress warnings so that the scanner does not spam console with runnable
 		// errors.
